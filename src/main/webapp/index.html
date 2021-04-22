@@ -21,8 +21,11 @@ function getDate(){
 	}
 	xhr.send();
 }
-window.addEventListener('load',getDate);
-setInterval(getDate,1000);
+function getDate2(){
+	document.querySelector('#date').innerText = new Date();
+}
+window.addEventListener('load',getDate2);
+setInterval(getDate2,1000);
 </script>
 </body>
 </html>
