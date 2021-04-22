@@ -5,6 +5,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-안녕 나는 ssl로 접속할 수 있단다~
+<div>안녕 나는 ssl로 접속할 수 있단다~</div>
+<div id="date"></div>
+
+<script>
+function getDate(){
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','/date');
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var res = JSON.parse(xhr.responseText);
+			var dates = res.date.split(" ");
+			document.querySelector('#date').innerText = '일자 : ' + dates[0] + ", 시간 : " + dates[1];
+		}
+	}
+	xhr.send();
+}
+window.addEventListener('load',getDate);
+setInterval(getDate,1000);
+</script>
 </body>
 </html>
